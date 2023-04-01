@@ -9,7 +9,13 @@
         max-height: 100%;
     }
 }
-
+.dropdown-item{
+    transition: background-color .2s, color .2s;
+    &:hover{
+        background-color: #cb4a3f;
+        color: #ffffff;
+    }
+}
 .nav-link{
     font-size: 1.05em;
     font-family: 'Montserrat', sans-serif;
@@ -19,6 +25,7 @@
     padding-bottom: 1em;
     min-width: 8em;
     text-align: center;
+    cursor: pointer;
 }
 
 .rg-selected{
@@ -32,4 +39,22 @@
 
 .navbar-nav{
     min-width: 80%;
+}
+
+.navbar{
+    .rg-nav-link {
+        background: 
+          linear-gradient(to right, transparent, transparent),
+          linear-gradient(to right, #cb4a3f, #cb4a3f);
+        background-size: 100% 0.1em, 0 0.1em;
+        background-position: 100% 100%, 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size 300ms, color 200ms;
+        &:hover {
+        background-size: 0 0.1em, 100% 0.1em;
+        color: #cb4a3f;
+      }
+      }
+      
+      
 }
