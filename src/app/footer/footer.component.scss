@@ -1,11 +1,19 @@
 .rg-footer{
     font-family: 'Montserrat', sans-serif;
     background-color: #222121;
-    min-height: 80vh;
+    height: 70vh;
 
+    .rg-footer_container{
+        width: 100%;
+        height: 90%;
+    }
     .rg-footer_content{
-        width: 50%;
+        width: 45%;
         height: 100%;
+
+        .rg-footer_positioning{
+            height: 100%;
+        }
         h4, p{
             color: #ffffff;
         }
@@ -22,16 +30,12 @@
         }
         .rg-logo{
             width: 50%;
+            opacity: 50%;
 
             img{
                 width: 100%;
                 height: 100%;                
             }
-        }
-
-        .rg-footer_positioning{
-            width: 80%;
-            height: 80%;
         }
     }
     .rg-copy{
@@ -40,6 +44,32 @@
 
         p{
             color: #ffffff;
+        }
+    }
+    .rg-footer_icons-container{
+        width: 100%;
+        i{
+            color: #ffffff;
+            font-size: 50px;
+        }
+        img{
+            width: 65px;
+        }
+    }
+    .image{
+        width: 200px;
+        height: 200px;
+    }
+    .rg-footer_pixiv-logo{
+        filter: brightness(0) invert(1);
+    }
+    .rg-footer_opacity{
+        opacity: .5;
+        transition: all .2s;
+        cursor: pointer;
+        &:hover{
+            opacity: 1;
+            transform: scale(1.2);
         }
     }
 }

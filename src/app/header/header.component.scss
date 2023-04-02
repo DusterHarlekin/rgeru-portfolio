@@ -29,7 +29,7 @@
 }
 
 .rg-selected{
-    background-color: #cb4a3f;
+    background-image: linear-gradient(to right, #cb4a3f, #cb4a3f);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -42,6 +42,7 @@
 }
 
 .navbar{
+    z-index: 10000;
     .rg-nav-link {
         background: 
           linear-gradient(to right, transparent, transparent),
@@ -58,3 +59,38 @@
       
       
 }
+
+@media (min-width: 280px) and (max-width: 991.98px) {
+
+    .navbar-nav{
+        padding: 1em 0;
+        background-color: #2b2b2b90;
+        .rg-nav-link{
+            color: #ffffff;
+        }
+    }
+
+    .nav-link{
+        font-size: 1.2em;
+        padding: .5em 0;
+        margin: .2em 0;
+        
+    }
+
+    .navbar{
+        .rg-nav-link{
+            transition: none;
+        }
+    }
+
+    .rg-selected{
+        padding: 0;
+        box-shadow: none;
+        background: rgb(203,74,63);
+background: linear-gradient(90deg, rgba(203,74,63,1) 0%, rgba(203,74,63,1) 80%, rgba(0, 0, 0, 0) 81%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .dropdown-item{
+        color: #ffffff;
+    }
+ }
