@@ -1,25 +1,97 @@
 <div class="my-5 rg-gal-subtitle">
-    <h2 class="text-center fw-bold">LATEST WORKS</h2>
+  <h2 class="text-center fw-bold">LATEST WORKS</h2>
 </div>
 <div class="rg-parent-container container d-flex justify-content-center mb-5">
-    <div class="parent">
-        <div class="div-v div1 " data-aos="zoom-in-right">
-            <img class="img" src="https://media.discordapp.net/attachments/721986690348089355/1090024956982730933/Pawa.jpg?width=332&height=468" alt="">
-        </div>
-        <div class="div-h div2" data-aos="zoom-in-left">
-            <img class="img" src="https://media.discordapp.net/attachments/721986690348089355/1090024956982730933/Pawa.jpg?width=332&height=468" alt="">
-        </div>
-        <div class="div-v" data-aos="zoom-in-right">
-            <img class="img" src="https://media.discordapp.net/attachments/721986690348089355/1090024956982730933/Pawa.jpg?width=332&height=468" alt="">
-        </div>
-        <div class="div-v" data-aos="zoom-in-left">
-            <img class="img" src="https://media.discordapp.net/attachments/721986690348089355/1090024956982730933/Pawa.jpg?width=332&height=468" alt="">
-        </div>
-        <div class="div-h div3" data-aos="zoom-in-right">
-            <img class="img" src="https://media.discordapp.net/attachments/721986690348089355/1090024956982730933/Pawa.jpg?width=332&height=468" alt="">
-        </div>
-        <div class="div-v"data-aos="zoom-in-left">
-            <img class="img" src="https://media.discordapp.net/attachments/721986690348089355/1090024956982730933/Pawa.jpg?width=332&height=468" alt="">
-        </div>
+  <div class="parent">
+    <div class="div-v div1" data-aos="zoom-in-right">
+      <img
+        class="img"
+        [src]="resImg[0].url"
+        (click)="showImg(0)"
+        alt=""
+        data-bs-target="#imgModal"
+        data-bs-toggle="modal"
+      />
     </div>
+    <div class="div-h div2" data-aos="zoom-in-left">
+      <img
+        class="img"
+        [src]="resImg[1].url"
+        (click)="showImg(1)"
+        alt=""
+        data-bs-target="#imgModal"
+        data-bs-toggle="modal"
+      />
+    </div>
+    <div class="div-v" data-aos="zoom-in-right">
+      <img
+        class="img"
+        [src]="resImg[2].url"
+        (click)="showImg(2)"
+        alt=""
+        data-bs-target="#imgModal"
+        data-bs-toggle="modal"
+      />
+    </div>
+    <div class="div-v div4" data-aos="zoom-in-left">
+      <img
+        class="img"
+        [src]="resImg[3].url"
+        (click)="showImg(3)"
+        alt=""
+        data-bs-target="#imgModal"
+        data-bs-toggle="modal"
+      />
+    </div>
+    <div class="div-h div3" data-aos="zoom-in-right"
+    data-bs-target="#imgModal"
+      data-bs-toggle="modal">
+      <img
+        class="img"
+        [src]="resImg[4].url"
+        (click)="showImg(4)"
+        alt=""
+      />
+    </div>
+    <div
+      class="div-v"
+      data-aos="zoom-in-left"
+      data-bs-target="#imgModal"
+      data-bs-toggle="modal"
+    >
+      <img
+        class="img"
+        [src]="resImg[5].url"
+        (click)="showImg(5)"
+        alt=""
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="imgModal"
+  tabindex="-1"
+  aria-labelledby="Image"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+    <div class="modal-content bg-transparent">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body pt-0">
+
+        <swiper-container init="false" class="mySwiper" #swiperGal navigation="true" loop="true"    style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff">
+        </swiper-container>
+      </div>
+    </div>
+  </div>
 </div>

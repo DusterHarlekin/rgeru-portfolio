@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Bevan&family=Montserrat&display=swap');
+/** Swiper use */
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
 *{
     font-family: 'Montserrat', sans-serif;
 }
