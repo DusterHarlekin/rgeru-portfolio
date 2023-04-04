@@ -9,6 +9,7 @@ import { BannerComponent } from './banner/banner.component';
 import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ComissionsComponent } from './comissions/comissions.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ComissionsComponent } from './comissions/comissions.component';
     BannerComponent,
     HomeComponent,
     GalleryComponent,
-    ComissionsComponent
+    ComissionsComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
