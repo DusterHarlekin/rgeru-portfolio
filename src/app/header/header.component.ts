@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SupabaseService } from '../services/supabase.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(public router: Router) {}
+  constructor(public router: Router, protected readonly supabase: SupabaseService) {}
   ngOnInit() {
     this.loadSelected();
+    console.log(this.supabase.getSession());
   }
   //SELECCION DINAMICA DEL NAV CON RUTAS SIN RECARGA DE PAGINA
   loadSelected() {

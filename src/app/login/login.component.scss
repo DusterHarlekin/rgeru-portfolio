@@ -1,0 +1,46 @@
+.rg-container{
+    padding-top: 3em;
+    background: rgb(245, 222, 179);
+  background-image: radial-gradient(
+    circle,
+    rgba(245, 222, 179, 1) 0%,
+    rgba(233, 194, 130, 1) 100%
+  );
+}
+
+.rg-form{
+   .rg-icon{
+    align-self: center;
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    border: 1px solid rgb(168, 168, 168);
+    background-color: #ffffff;
+    overflow: hidden;
+    img{
+        height: 100%;
+        width: 100%;
+    }
+   }
+    border-radius: 20px;
+    form{
+        min-width: 16em;
+        width: 100%;
+        height: 100%;
+        background-color: #ededed;
+        .btn {
+            border-width: 2px;
+            border-color: #cb4a3f;
+            border-radius: 15px;
+            color: #ffffff;
+            background-color: #cb4a3f;
+            align-self: center;
+          }
+          .btn:hover {
+            background-color: #ac2d22;
+            color: #ffffff;
+            border-color: transparent;
+          }
+    }
+}
+

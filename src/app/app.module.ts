@@ -10,6 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ComissionsComponent } from './comissions/comissions.component';
 import { FormComponent } from './form/form.component';
+import { LoginComponent } from './login/login.component';
+import { PanelComponent } from './panel/panel.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { FormComponent } from './form/form.component';
     HomeComponent,
     GalleryComponent,
     ComissionsComponent,
-    FormComponent
+    FormComponent,
+    LoginComponent,
+    PanelComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

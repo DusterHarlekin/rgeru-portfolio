@@ -56,6 +56,27 @@
             <li><a class="dropdown-item" href="#">Spanish</a></li>
           </ul>
         </li>
+
+        <li *ngIf="supabase.getSession()" class="nav-item dropdown rg-nav-link rg-nav-user">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarUser"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            RGERU
+          </a>
+          <ul
+            class="dropdown-menu bg-transparent"
+            aria-labelledby="navbarUser"
+          >
+            <li>
+              <a class="dropdown-item" [routerLink]="['/panel']">Control panel</a>
+            </li>
+            <li><a class="dropdown-item" (click)="supabase.signOut()">Log Out</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

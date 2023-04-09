@@ -1,0 +1,20 @@
+<app-header ></app-header>
+<div class="rg-container vh-100 d-flex justify-content-center align-items-center">
+    <div class="rg-form w-50 d-flex justify-content-center align-items-center p-4">
+    
+        <form class="form-control w-100 d-flex flex-column py-4" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <div class="rg-icon">
+                <img src="https://media.discordapp.net/attachments/721986690348089355/1089648826299732038/Geru_head.png">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Contraseña</label>
+              <input type="password" class="form-control" formControlName="password">
+            </div>
+            <input class="btn btn-lg mt-3" type="submit" value="Iniciar sesión">
+        </form>
+    </div>
+</div>

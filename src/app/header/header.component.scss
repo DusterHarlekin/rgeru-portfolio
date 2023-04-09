@@ -9,6 +9,22 @@
     max-height: 100%;
   }
 }
+
+.rg-user-img{
+  background-color: #000000;
+  height: 1.5em;
+  width: 1.5em;
+  display: inline-block;
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.rg-nav-user{
+  img{
+    max-height: 100%;
+
+  }
+}
 .dropdown-item {
   transition: background-color 0.2s, color 0.2s;
   &:hover {
