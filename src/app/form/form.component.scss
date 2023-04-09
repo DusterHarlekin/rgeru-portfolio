@@ -3,17 +3,19 @@
   font-family: "Montserrat", sans-serif;
   height: 95vh;
   position: relative;
+  justify-content: center;
 }
 form {
   background-color: blueviolet;
   position: relative;
   width: 80%;
+  height: 92%;
   background-color: #ededed;
   border-radius: 15px;
 }
 .rg-form_vignette {
   height: 4em;
-  width: 30%;
+  width: 40%;
   background-color: #cb4a3f;
   border-radius: 15px;
   position: absolute;
@@ -35,9 +37,13 @@ form {
   height: 50%;
   margin-left: 5%;
   margin-right: 5%;
+  justify-content: center;
+  textarea{
+    margin-bottom: 10px;
+  }
   button {
     background-color: #cb4a3f;
-    width: 10%;
+    width: 5em;
     color: #ffffff;
     align-self: center;
     &:hover {
@@ -58,11 +64,13 @@ select {
 option:not(:first-of-type) {
   color: #000000;
 }
-.rg-form_pet-container {
+.rg-form_pet-desktop {
   height: 100%;
   width: 70%;
   position: relative;
-  bottom: -35px;
+  bottom: -50px;
+  display: flex;
+  justify-content: center;
   img {
     height: 100%;
     max-width: 100%;
@@ -73,6 +81,7 @@ option:not(:first-of-type) {
 }
 .rg-form_description-container {
   width: 100%;
+  justify-content: space-evenly;
   p {
     font-size: 11px;
     text-align: justify;
@@ -86,4 +95,65 @@ option:not(:first-of-type) {
 }
 .form-check-input {
   cursor: pointer;
+}
+.rg-form_pet-mobile{
+  display: none;
+}
+//RESPONSIVE PARA MOVILES
+
+@media (min-width: 250px) and (max-width: 700px){
+  form{
+    width: 99.5%;
+    height: 70%;
+  }
+  .rg-form_container{
+    height: 130vh;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rg-form_background{
+    height: 70%;
+  }
+  .rg-form_pet-desktop{
+    display: none;
+  }
+  .rg-form_positioning {
+    width: 93%;
+  }
+  .rg-form_content{
+    height: 50%;
+    width: 100%;
+    margin: 0;
+    padding: 0 20px 20px 20px;
+    textarea{
+      height: 50%;
+    }
+    p{ 
+      margin-bottom: 5px;
+      overflow: scroll;
+      height: 55%;
+    }
+    button{
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+  }
+  .rg-form_vignette{
+    width: 70%;
+    p{
+      font-size: 14px;
+    }
+    .rg-form_description-container{
+      padding: 0;
+      justify-content: space-between;
+    }
+  }
+  .rg-form_pet-mobile{
+    display: flex;
+    height: 250px;
+    z-index: 10;
+    img{
+      height: 100%;
+    }
+  }
 }
