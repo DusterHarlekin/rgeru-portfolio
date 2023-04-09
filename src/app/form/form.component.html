@@ -1,6 +1,7 @@
-<div class="rg-form_container d-flex justify-content-center container-fluid">
+<div class="rg-form_container d-flex container-fluid">
+  
   <div class="rg-form_background"></div>
-  <form class="mb-5">
+  <form>
     <div
       class="rg-form_vignette container-fluid d-flex justify-content-center align-items-center"
     >
@@ -36,16 +37,12 @@
           </select>
         </div>
       </div>
-      <div
-        class="rg-form_positioning d-flex justify-content-center align-items-end"
-      >
-        <div class="rg-form_pet-container">
+        <div class="rg-form_pet-desktop rg-form_positioning align-items-end">
           <img src="../../assets/petGeru.png" />
         </div>
-      </div>
     </div>
     <div class="rg-form_content d-flex flex-column">
-      <label class="form-label">Description</label>
+      <label class="form-label mt-3">Description</label>
       <textarea
         class="rg-form_description form-control"
         name=""
@@ -55,7 +52,7 @@
       ></textarea>
 
       <div
-        class="rg-form_description-container d-flex justify-content-evenly mt-3"
+        class="rg-form_description-container d-flex align-items-center"
       >
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam fuga
@@ -68,4 +65,8 @@
       <button type="submit" class="btn mb-4">Send</button>
     </div>
   </form>
+
+  <div class="rg-form_pet-mobile">
+    <img src="../../assets/petGeru.png" />
+  </div>
 </div>
