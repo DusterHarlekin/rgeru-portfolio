@@ -1,19 +1,24 @@
 //CONTENEDOR DEL FORM
 .rg-form_container {
   font-family: "Montserrat", sans-serif;
-  height: 95vh;
+  height: 62vh;
   position: relative;
+  align-items: center;
   justify-content: center;
 }
-form {
-  background-color: blueviolet;
+// FORMULARIO
+form{
   position: relative;
-  width: 80%;
+  width: 60%;
+  max-width: 55em;
+  min-width: 15em;
   height: 92%;
   background-color: #ededed;
   border-radius: 15px;
+  padding: 1em;
 }
-.rg-form_vignette {
+//VINETA
+.rg-form_vignette{
   height: 4em;
   width: 40%;
   background-color: #cb4a3f;
@@ -21,139 +26,159 @@ form {
   position: absolute;
   left: -15px;
   top: -30px;
-  p {
+
+  p{
     color: #ffffff;
-    margin-bottom: 0;
+    margin: 0;
   }
 }
-.rg-form_background {
+//BACKGROUND ROJO
+.rg-form_background{
   background-color: #cb4a3f;
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 50%;
 }
-.rg-form_content {
-  height: 50%;
-  margin-left: 5%;
-  margin-right: 5%;
-  justify-content: center;
-  textarea{
-    margin-bottom: 10px;
-  }
-  button {
-    background-color: #cb4a3f;
-    width: 5em;
-    color: #ffffff;
-    align-self: center;
-    &:hover {
-      background-color: #9f1e13;
-    }
-  }
+//CONTENEDOR PRINCIPAL
+.rg-form_content{
+  height: 54%;
+  align-items: center;
 }
-//CONTENEDOR DE POSICIONAMIENTO
+.rg-form_content-2{
+  height: 45%;
+  align-items: center;
+  justify-content: space-between;
+}
 
-.rg-form_positioning {
-  width: 45%;
-  height: 100%;
-  max-height: 100%;
+//INPUTS
+.rg-form_inputs{
+  margin-top: 6em;
 }
-select {
+
+textarea{
+  height: 50%;
+}
+
+button{
+  background-color: #cb4a3f;
+  width: 5em;
+  color: #ffffff;
+  &:hover{
+    background-color: #9f1e13;
+    color: #ffffff;
+  }
+}
+
+// CONTENEDOR DE POSICIONAMIENTO
+.rg-form_positioning{
+  width: 48%;
+  height: 100%;
+}
+
+select{
   color: #bfbfbf;
+  option:not(:first-of-type){
+    color: #000000;
+  }
 }
-option:not(:first-of-type) {
-  color: #000000;
-}
-.rg-form_pet-desktop {
+
+//PET DESKTOP
+.rg-form_pet-desktop{
   height: 100%;
-  width: 70%;
+  width: 50%;
+  max-height: 19em;
+  min-width: 14em;
   position: relative;
-  bottom: -50px;
+  bottom: -5px;
   display: flex;
   justify-content: center;
-  img {
+  img{
     height: 100%;
-    max-width: 100%;
   }
 }
-.rg-form_description {
-  height: 60%;
-}
-.rg-form_description-container {
+//TERMINOS Y CHECK
+.rg-form_terms{
   width: 100%;
-  justify-content: space-evenly;
-  p {
+  justify-content: space-around;
+
+  p{
     font-size: 11px;
     text-align: justify;
     width: 90%;
   }
-  input {
-    width: 20px;
-    height: 20px;
-    margin: 0;
+
+  input{
+    width: 1.25em;
+    height: 1.25em;
+    cursor: pointer;
   }
 }
-.form-check-input {
-  cursor: pointer;
-}
+
+//PET MOBILE
 .rg-form_pet-mobile{
   display: none;
 }
-//RESPONSIVE PARA MOVILES
 
-@media (min-width: 250px) and (max-width: 700px){
-  form{
-    width: 99.5%;
-    height: 70%;
-  }
+
+// RESPONSIVE PARA MOVILES
+
+@media (min-width: 250px) and (max-width: 740px){
   .rg-form_container{
-    height: 130vh;
+    height: 54em;
     flex-direction: column;
-    align-items: center;
   }
+
+  form{
+    width: 98%;
+  }
+
   .rg-form_background{
     height: 70%;
   }
-  .rg-form_pet-desktop{
-    display: none;
-  }
-  .rg-form_positioning {
-    width: 93%;
-  }
-  .rg-form_content{
-    height: 50%;
-    width: 100%;
-    margin: 0;
-    padding: 0 20px 20px 20px;
-    textarea{
-      height: 50%;
-    }
-    p{ 
-      margin-bottom: 5px;
-      overflow: scroll;
-      height: 55%;
-    }
-    button{
-      margin-bottom: 5px;
-      margin-top: 5px;
-    }
-  }
+
   .rg-form_vignette{
     width: 70%;
     p{
-      font-size: 14px;
-    }
-    .rg-form_description-container{
-      padding: 0;
-      justify-content: space-between;
+    font-size: 14px;
     }
   }
+  //CAMBIO DE PET
   .rg-form_pet-mobile{
     display: flex;
-    height: 250px;
+    height: 13em;
     z-index: 10;
     img{
       height: 100%;
     }
+  }
+  .rg-form_pet-desktop{
+    display: none;
+  }
+
+  .rg-form_positioning{
+    width: 100%;
+  }
+
+  .rg-form_terms{
+    height: 30%;
+  }
+
+  .rg-form_content-2{
+    textarea{
+      height: 40%;
+    }
+    p{
+      overflow: scroll;
+    }
+  }
+}
+//RESPONSIVE ORIENTATION LANDSCAPE
+@media (min-width: 100px) and (max-width: 1368px) and (min-height: 279px) and (max-height: 1024px) and (orientation: landscape){
+  .rg-form_container{
+    min-height: 40em;
+  }
+  .rg-form_positioning{
+    min-height: 310px;
   }
 }
