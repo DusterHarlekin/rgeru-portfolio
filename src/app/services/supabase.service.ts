@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment'
   providedIn: 'root'
 })
 export class SupabaseService {
-  public supabase: any
+  private supabase: any
   private session:any
   constructor(private router:Router) {
     this.supabase = createClient(environment.URL, environment.KEY)
@@ -18,6 +18,20 @@ export class SupabaseService {
       email: email,
       password: password,
     })
+  }
+
+  deleteCategory(categoryId: any){
+    return this.supabase
+    .from('categories')
+    .delete()
+    .eq('id', categoryId)
+  }
+
+  addCategory(categoryName: any){
+    return this.supabase
+    .from('categories')
+    .insert({ name: categoryName })
+    .select()
   }
 
  getCategories(){
@@ -35,7 +49,7 @@ export class SupabaseService {
     return this.supabase
       .from('categories')
       .select()
-      .order('id', { ascending: false });
+      .order('id', { ascending: true });
   }
 
   getAllImg(){

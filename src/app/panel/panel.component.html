@@ -9,8 +9,8 @@
         <div class="d-flex justify-content-evenly align-items-center flex-wrap mt-4">
 
 
-            <div class="rg-cat-card mx-3 my-2">
-                <div class="card-content flex-column d-flex justify-content-center align-items-center w-100- h-100" [style]="'background-image: radial-gradient(circle, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%)'" id="addCat">
+            <div class="rg-cat-card mx-3 my-2" >
+                <div data-bs-toggle="modal" (click)="clearAddCatForm()" data-bs-target="#addCatModal" class="card-content flex-column d-flex justify-content-center align-items-center w-100- h-100" [style]="'background-image: radial-gradient(circle, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%)'" id="addCat">
                     <i class="fas fa-plus"></i>
                     <span>
                         Agregar categoría
@@ -19,16 +19,15 @@
                 
             </div>
 
-            <div class="rg-cat-card mx-2 my-2" data-bs-toggle="modal" data-bs-target="#panelModal" *ngFor="let cat of categories; let i = index">
-                <div class="card-content d-flex justify-content-center align-items-center w-100- h-100" 
-                [style]="'background-image: radial-gradient(circle, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%)'" id="">
-                <img [src]="firstOfCat[i]" alt="">
-                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="fas fa-trash-alt"></i></button>
-                    <span class="text-center">
-                        {{cat.name}}
-                    </span>
-                </div>
-                
+            <div class="rg-cat-card mx-2 my-2"  *ngFor="let cat of categories; let i = index">
+              <div data-bs-toggle="modal" data-bs-target="#panelModal" class="card-content d-flex justify-content-center align-items-center w-100- h-100" 
+              [style]="'background-image: radial-gradient(circle, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%)'" id="">
+              <img [src]="firstOfCat[i]" alt="">
+              <span class="text-center">
+                {{cat.name}}
+              </span>
+            </div>
+            <button (click)="deleteCategory(cat.id)" class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button>
             </div>
  
         </div>
@@ -59,7 +58,7 @@
         <div class="modal-body">
 
           
-            
+            <!--FORMULARIO AGREGAR IMAGENES-->
           <div class="row" *ngIf="!imgEdit; else elsePanel" >
             <div class="col-6">
                 <form [formGroup]="addImgForm" (ngSubmit)="addImg()">
@@ -72,14 +71,13 @@
                       <div class="col-sm-10">
                         <label class="form-label">Categoría</label>
                         <select formControlName="category_id" class="form-select" id="">
-                            <option
-                            class="rg-form_select-first-option"
-                            disabled
-                            selected
-                            hidden
-                            >
-                            Categoría no seleccionada
-                            </option>
+                          <option hidden [value]="null" >
+                            Sin seleccionar
+                          </option>
+                          <option [value]="null" >
+                            Ninguna
+                          </option>
+                            
                             <ng-container *ngFor="let cat of categories">
                                 <option [value]="cat.id">{{cat.name}}</option>
                             </ng-container>
@@ -171,20 +169,23 @@
   <!-- Button trigger modal -->
   
   <!-- Modal -->
-  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addCatModal" tabindex="-1" aria-labelledby="addCatModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="confirmModalLabel">Eliminar imagen</h5>
+          <h5 class="modal-title" id="confirmModalLabel">Agregar categoría</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img [src]="" alt="">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Confirmar</button>
+          <form (ngSubmit)="addCategory()" class="form-control" [formGroup]="addCatForm">
+            <label class="form-label">Nombre de la categoría</label>
+            <input formControlName="name" type="text" class="form-control">
+            <div class="modal-footer">
+              <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Cancelar">
+              <input type="submit" [disabled]="!addCatForm.valid" class="btn btn-primary" value="Agregar">
+            </div>
+          </form>
+          </div>
         </div>
       </div>
-    </div>
   </div>

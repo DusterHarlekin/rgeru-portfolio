@@ -1,8 +1,8 @@
 //CONTENEDOR DEL FORM
 .rg-form_container {
   font-family: "Montserrat", sans-serif;
-  height: 62vh;
-  max-height: 40em;
+  min-height: 62vh;
+ height: 40em;
   position: relative;
   align-items: center;
   justify-content: center;

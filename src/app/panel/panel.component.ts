@@ -30,6 +30,10 @@ export class PanelComponent {
   constructor(protected readonly supabase: SupabaseService, private readonly formBuilder: FormBuilder){}
 
    
+  //CREANDO FORM PARA ASIGNARLO AL HTML
+  addCatForm = this.formBuilder.group({
+    name: ['', Validators.required]
+  })
 
   addImgForm = this.formBuilder.group({
     url: ['', Validators.required],
@@ -49,6 +53,76 @@ export class PanelComponent {
   ngOnInit(){
     this.getCategories();
   }
+
+  //FUNCIONES DE CATEGORIA
+
+  deleteCategory(catId: any){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¿Estás seguro de eliminar esta categoría? Esto no se puede revertir",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data, error } = await this.supabase.deleteCategory(catId)
+          if (error) throw error
+          console.log(data)
+          const pos = this.categories.map((cat: { id: any; }) => cat.id).indexOf(catId)
+          this.categories.splice(pos, 1)
+  
+          this.Toast.fire({
+            icon: 'success',
+            title: 'Imagen eliminada con éxito'
+          })
+        } catch (error) {
+          if (error instanceof Error) {
+            console.log(error.message)
+            this.Toast.fire({
+              icon: 'error',
+              title: 'Hubo un error: '+error.message
+            })
+          }
+        } finally {
+          //...
+        }
+
+
+       
+      } 
+    })
+  }
+
+  async addCategory(){
+    try {
+      const { data, error } = await this.supabase.addCategory(this.addCatForm.value.name?.toLowerCase());
+      if (error) throw error
+      console.log(data)
+      this.categories.push(data[0]);
+      this.Toast.fire({
+        icon: 'success',
+        title: 'Categoría agregada con éxito'
+      })
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message)
+        this.Toast.fire({
+          icon: 'error',
+          title: 'Hubo un error: '+error.message
+        })
+      }
+    } finally {
+      //...
+    }
+  }
+
+  clearAddCatForm(){
+    this.addCatForm.reset()
+  }
+  //FUNCIONES DE IMAGEN
 
   async addImg(){
     console.log(this.addImgForm.value)
@@ -135,15 +209,7 @@ export class PanelComponent {
 
 
        
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        Swal.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
-      }
+      } 
     })
   }
 
@@ -164,7 +230,10 @@ export class PanelComponent {
     let result = this.images.filter((img: { category_id: any; }) => {
       return img.category_id === cat_id
     })
-   return result[0].url;
+    if(result[0] == undefined)
+    return result[0]
+    else
+    return result[0].url;
   }
 
   async getCategories(){
@@ -193,6 +262,7 @@ export class PanelComponent {
     } finally {
       //...
       for (const cat of this.categories) {
+
         this.firstOfCat.push(this.getFirstImage(cat.id));
       }
       
