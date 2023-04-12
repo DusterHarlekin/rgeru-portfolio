@@ -13,6 +13,7 @@ import { FormComponent } from './form/form.component';
 import { LoginComponent } from './login/login.component';
 import { PanelComponent } from './panel/panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormComponent,
     LoginComponent,
     PanelComponent,
+    ContactComponent,
     
   ],
   imports: [

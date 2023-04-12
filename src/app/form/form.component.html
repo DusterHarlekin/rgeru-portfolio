@@ -1,26 +1,29 @@
 <div class="rg-form_container d-flex container-fluid">
-  
+
+  <!-- BACKGROUND -->
   <div class="rg-form_background"></div>
+
+  <!-- FORMULARIO -->
   <form>
-    <div
-      class="rg-form_vignette container-fluid d-flex justify-content-center align-items-center"
-    >
+    <!-- VINETA -->
+    <div class="rg-form_vignette d-flex justify-content-center align-items-center">
       <p>Send me a message</p>
     </div>
 
-    <div
-      class="rg-form_content container-fluid d-flex justify-content-evenly align-items-center"
-    >
-      <div class="rg-form_positioning rg-form_inputs pt-5 mt-5">
-        <div class="mb-2">
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="rg-form_content container-fluid d-flex">
+      
+      <!-- CONTENEDOR DE POSICIONAMIENTO, INPUTS -->
+      <div class="rg-form_positioning rg-form_inputs">
+        <div class="mb-1">
           <label class="form-label">E-mail</label>
           <input type="text" class="form-control" />
         </div>
-        <div class="mb-2">
+        <div class="mb-1">
           <label class="form-label">Subject</label>
           <input type="text" class="form-control" />
         </div>
-        <div class="mb-2">
+        <div class="mb-1">
           <label class="form-label">Order</label>
           <select class="form-select" name="" id="">
             <option
@@ -36,23 +39,29 @@
             <option value="">Example</option>
           </select>
         </div>
+        
+        <label class="form-label rg-form_label-description mt-2 mb-1">Description</label>
+        
       </div>
-        <div class="rg-form_pet-desktop rg-form_positioning align-items-end">
-          <img src="../../assets/petGeru.png" />
-        </div>
+      
+      <!-- CONTENEDOR DE POSICIONAMIENTO, PET -->
+      <div class="rg-form_positioning rg-form_pet-desktop">
+        <img src="../../assets/petGeru.png" />
+      </div>
     </div>
-    <div class="rg-form_content d-flex flex-column">
-      <label class="form-label mt-3">Description</label>
+    
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="rg-form_content-2 container-fluid d-flex flex-column">
+      
+      <!-- TEXTAREA PARA DESCRIPCION -->
       <textarea
-        class="rg-form_description form-control"
-        name=""
-        id=""
-   
-      ></textarea>
+          class="rg-form_description form-control mb-2"
+          name=""
+          id=""
+        ></textarea>
 
-      <div
-        class="rg-form_description-container d-flex align-items-center"
-      >
+        <!-- TERMINOS Y CHECKBOX -->
+      <div class="rg-form_terms container-fluid d-flex ">
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam fuga
           voluptatibus voluptatem aperiam. Iste minus, necessitatibus in fuga,
@@ -61,11 +70,16 @@
         </p>
         <input type="checkbox" class="form-check-input" />
       </div>
-      <button type="submit" class="btn mb-4">Send</button>
+
+      <button type="submit" class="btn mb-2">Send</button>
+
     </div>
+
   </form>
 
+  <!-- IMG PET MOBILE -->
   <div class="rg-form_pet-mobile">
     <img src="../../assets/petGeru.png" />
   </div>
+
 </div>

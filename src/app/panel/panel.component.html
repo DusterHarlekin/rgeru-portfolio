@@ -38,8 +38,8 @@
             <div class="rg-img-card mx-2 my-2 " *ngFor="let img of images">
                 <div class="d-flex justify-content-center align-items-center h-100 w-100" data-bs-toggle="modal" data-bs-target="#panelModal" (click)="openModalPanel(img)">
                     <img [src]="img.url">
-                    <button class="btn btn-danger"(click)="deleteImg(img.id)"><i class="fas fa-trash-alt"></i></button>
-                </div>
+                  </div>
+                  <button class="btn btn-danger"(click)="deleteImg(img.id)"><i class="fas fa-trash-alt"></i></button>
             </div>
                   
         </div>
