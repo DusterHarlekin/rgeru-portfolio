@@ -38,4 +38,7 @@ body {
       border: 3px solid #cb4a3f;
     }
   }
+  #galNavbar ul::-webkit-scrollbar-track{
+    background: transparent;
+  }
 }

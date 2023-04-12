@@ -8,20 +8,19 @@
         class="rg-banner-title-container d-flex align-items-lg-start justify-content-center flex-column"
       >
         <div class="container-bottom-to-up">
-          <h2 class="rg-banner-title bottom-to-up px-4">Hi!</h2>
+          <h2 class="rg-banner-title bottom-to-up px-4">{{selContent.banHi}}</h2>
         </div>
         <div class="container-bottom-to-up">
-          <h2 class="rg-banner-subtitle rg-banner-anim">I'M RGERU</h2>
+          <h2 class="rg-banner-subtitle rg-banner-anim">{{selContent.banPres}}</h2>
         </div>
         <span class="rg-banner-info fadeIn"
-          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
-          tempore voluptatum reprehenderit magni vel vero laboriosam atque</span
+          >{{selContent.banDesc}}</span
         >
         <button
           class="btn mt-4 me-lg-5 mb-lg-3 fw-bold"
-          [routerLink]="['/gallery']"
+          [routerLink]="['/gallery/'+lang.lang]"
         >
-          GALLERY
+          {{selContent.banBtn}}
         </button>
       </div>
     </div>
@@ -42,12 +41,10 @@
           class="rg-banner-title-container2 d-flex align-items-lg-start justify-content-center flex-column"
         >
           <div class="container-bottom-to-up mb-lg-2">
-            <h2 class="rg-banner-title bottom-to-up px-lg-4">Gallery</h2>
+            <h2 class="rg-banner-title bottom-to-up px-lg-4">{{selContent.banGal}}</h2>
           </div>
           <span class="rg-banner-info fadeIn"
-            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
-            tempore voluptatum reprehenderit magni vel vero laboriosam
-            atque</span
+            >{{selContent.banGalDesc}}</span
           >
         </div>
       </div>

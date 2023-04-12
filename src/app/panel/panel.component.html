@@ -1,3 +1,190 @@
 <app-header></app-header>
 
-<button (click)="supabase.signOut()">SignOut</button>
+<div class="float-btn d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#panelModal" (click)="openModalPanel()">
+    <i class="fas fa-plus"></i>
+</div>
+<div class="container-fluid rg-container">
+    <div class="rg-content">
+        <h2 class="text-center fw-bold">POR CATEGORÍA</h2>
+        <div class="d-flex justify-content-evenly align-items-center flex-wrap mt-4">
+
+
+            <div class="rg-cat-card mx-3 my-2">
+                <div class="card-content flex-column d-flex justify-content-center align-items-center w-100- h-100" [style]="'background-image: radial-gradient(circle, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%)'" id="addCat">
+                    <i class="fas fa-plus"></i>
+                    <span>
+                        Agregar categoría
+                    </span>
+                </div>
+                
+            </div>
+
+            <div class="rg-cat-card mx-2 my-2" data-bs-toggle="modal" data-bs-target="#panelModal" *ngFor="let cat of categories; let i = index">
+                <div class="card-content d-flex justify-content-center align-items-center w-100- h-100" 
+                [style]="'background-image: radial-gradient(circle, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%)'" id="">
+                <img [src]="firstOfCat[i]" alt="">
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="fas fa-trash-alt"></i></button>
+                    <span class="text-center">
+                        {{cat.name}}
+                    </span>
+                </div>
+                
+            </div>
+ 
+        </div>
+
+        <h2 class="text-center fw-bold mt-5">TODAS LAS IMÁGENES</h2>
+        <div class="d-flex justify-content-evenly align-items-center flex-wrap mt-4">
+            <div class="rg-img-card mx-2 my-2 " *ngFor="let img of images">
+                <div class="d-flex justify-content-center align-items-center h-100 w-100" data-bs-toggle="modal" data-bs-target="#panelModal" (click)="openModalPanel(img)">
+                    <img [src]="img.url">
+                    <button class="btn btn-danger"(click)="deleteImg(img.id)"><i class="fas fa-trash-alt"></i></button>
+                </div>
+            </div>
+                  
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="panelModal" tabindex="-1" aria-labelledby="panelModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="panelModalLabel">Panel de control de imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          
+            
+          <div class="row" *ngIf="!imgEdit; else elsePanel" >
+            <div class="col-6">
+                <form [formGroup]="addImgForm" (ngSubmit)="addImg()">
+                    <div class="row mb-3">
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" formControlName="url" id="imgUrl" placeholder="URL de la imagen">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-10">
+                        <label class="form-label">Categoría</label>
+                        <select formControlName="category_id" class="form-select" id="">
+                            <option
+                            class="rg-form_select-first-option"
+                            disabled
+                            selected
+                            hidden
+                            >
+                            Categoría no seleccionada
+                            </option>
+                            <ng-container *ngFor="let cat of categories">
+                                <option [value]="cat.id">{{cat.name}}</option>
+                            </ng-container>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-10">
+                          <div class="form-check form-switch">
+                              <label class="form-check-label" for="isLatest">
+                                  Agregar a página principal (Latest Works)
+                                </label>
+                                <input formControlName="isLatest" class="form-check-input" type="checkbox" id="isLatest">
+                            </div>
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="isMature">
+                                  Contenido +18
+                                </label>
+                              <input formControlName="isMature" class="form-check-input" type="checkbox" id="isMature">
+                            </div>
+                      </div>
+                    </div>
+                    <button [disabled]="!addImgForm.valid" data-bs-dismiss="modal" type="submit" class="btn btn-primary">Enviar</button>
+                  </form>
+            </div>
+            <div class="col-6 overflow-hidden d-flex justify-content-center align-items-center" >
+                <img class="h-100" [src]="addImgForm.value.url">
+            </div>
+        </div>
+
+        <ng-template #elsePanel>
+          <div class="row">
+            <div class="col-6">
+                <form [formGroup]="updateImgForm" (ngSubmit)="updateImg()">
+                    <div class="row mb-3">
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" formControlName="url" id="imgUrl" placeholder="URL de la imagen">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-10">
+                        <label class="form-label">Categoría</label>
+                        <select formControlName="category_id" class="form-select" id="">
+                            <option
+                            class="rg-form_select-first-option"
+                            disabled
+                            selected
+                            hidden
+                            >
+                            Categoría no seleccionada
+                            </option>
+                            <ng-container *ngFor="let cat of categories">
+                                <option [value]="cat.id">{{cat.name}}</option>
+                            </ng-container>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-sm-10">
+                          <div class="form-check form-switch">
+                              <label class="form-check-label" for="isLatest">
+                                  Agregar a página principal (Latest Works)
+                                </label>
+                                <input formControlName="isLatest" class="form-check-input" type="checkbox" id="isLatest">
+                            </div>
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="isMature">
+                                  Contenido +18
+                                </label>
+                              <input formControlName="isMature" class="form-check-input" type="checkbox" id="isMature">
+                            </div>
+                      </div>
+                    </div>
+                    <button [disabled]="!updateImgForm.valid" data-bs-dismiss="modal" type="submit" class="btn btn-primary">Guardar cambios</button>
+                  </form>
+            </div>
+            <div class="col-6 overflow-hidden d-flex justify-content-center align-items-center" >
+                <img class="h-100" [src]="updateImgForm.value.url">
+            </div>
+        </div>
+        </ng-template>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Eliminar imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img [src]="" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>

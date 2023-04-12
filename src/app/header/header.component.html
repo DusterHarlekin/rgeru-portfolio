@@ -27,13 +27,13 @@
     >
       <ul class="navbar-nav justify-content-evenly">
         <li class="nav-item rg-item rg-nav-link">
-          <a class="nav-link" routerLink="/home">HOME</a>
+          <a class="nav-link" [routerLink]="['/home/'+lang.lang]">{{selContent.navHome}}</a>
         </li>
         <li class="nav-item rg-item rg-nav-link">
-          <a class="nav-link" routerLink="/gallery">GALLERY</a>
+          <a class="nav-link" [routerLink]="['/gallery/'+lang.lang]">{{selContent.navGal}}</a>
         </li>
         <li class="nav-item rg-item rg-nav-link">
-          <a class="nav-link" routerLink="/home">CONTACT</a>
+          <a class="nav-link" [routerLink]="['/home/'+lang.lang]">{{selContent.navContact}}</a>
         </li>
         <li class="nav-item dropdown rg-nav-link">
           <a
@@ -44,16 +44,16 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            LANGUAGE
+            {{selContent.navLang.name}}
           </a>
           <ul
             class="dropdown-menu bg-transparent"
             aria-labelledby="navbarDropdownMenuLink"
           >
             <li>
-              <a class="dropdown-item" [routerLink]="['/home']">English</a>
+              <a class="dropdown-item" (click)="chngLang('en')" [routerLink]="['/home']">{{selContent.navLang.opt1}}</a>
             </li>
-            <li><a class="dropdown-item" href="#">Spanish</a></li>
+            <li><a class="dropdown-item" (click)="chngLang('es')" [routerLink]="['/home']">{{selContent.navLang.opt2}}</a></li>
           </ul>
         </li>
 
@@ -74,7 +74,7 @@
             <li>
               <a class="dropdown-item" [routerLink]="['/panel']">Control panel</a>
             </li>
-            <li><a class="dropdown-item" (click)="supabase.signOut()">Log Out</a></li>
+            <li><button class="dropdown-item" (click)="supabase.signOut()">Log Out</button></li>
           </ul>
         </li>
       </ul>

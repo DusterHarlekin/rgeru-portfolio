@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment'
   providedIn: 'root'
 })
 export class SupabaseService {
-  private supabase: any
+  public supabase: any
   private session:any
   constructor(private router:Router) {
     this.supabase = createClient(environment.URL, environment.KEY)
@@ -18,6 +18,55 @@ export class SupabaseService {
       email: email,
       password: password,
     })
+  }
+
+ getCategories(){
+    /*
+    const result = await this.supabase
+      .from('tasks')
+      .select()
+      .eq('userId', user?.id)
+      .eq('done', done)
+      .order('id', { ascending: true });
+    console.log(result);
+    console.log(result.data);
+    */
+
+    return this.supabase
+      .from('categories')
+      .select()
+      .order('id', { ascending: false });
+  }
+
+  getAllImg(){
+    return this.supabase
+    .from('images')
+    .select()
+    .order('id', { ascending: false });
+  }
+
+  addImg(addImgForm: any){
+    return this.supabase
+    .from('images')
+    .insert({ url: addImgForm.value.url, category_id: addImgForm.value.category_id, isLatest: addImgForm.value.isLatest, isMature: addImgForm.value.isMature})
+    .select()
+  }
+
+  updateImg(updateImgForm: any){
+    return this.supabase
+    .from('images')
+    .update({ url: updateImgForm.value.url, category_id: updateImgForm.value.category_id, isLatest: updateImgForm.value.isLatest, isMature: updateImgForm.value.isMature})
+    .eq('id', updateImgForm.value.id)
+    .select()
+  }
+
+  deleteImg(imgId:number){
+    
+    return this.supabase
+    .from('images')
+    .delete()
+    .eq('id', imgId)
+
   }
 
   async signOut(){
